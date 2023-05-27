@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+// Route::controller(ProductController::class)->prefix('product')->group(function(){
+
+// });
+
+Route::prefix('product')->group(function () {
+    Route::get('list',[ProductController::class,'index'])->name('api.product.list');
 });
